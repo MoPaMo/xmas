@@ -6,7 +6,7 @@ var config = {
       default: "arcade",
       arcade: {
         gravity: {
-          y: 200,
+          y: 0,
           x: 0
         },
       },
@@ -24,18 +24,25 @@ var config = {
   function preload() {
     this.load.setBaseURL("/assets/");
   
-    this.load.image("white", "/Main.png");
+    this.load.image("white", "/white.png");
+    this.load.image("avatar", "/Main.png");
   }
   var keys, avatar
   
   function create() {
     this.cameras.main.setSize(screen.width, screen.height);
   
-   /* avatar = this.physics.add.image(400, 100, "sleigh");
+    keys = {
+        a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
+        w: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
+        s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
+        d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
+        space: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+      }
+    avatar = this.physics.add.image(400, 100, "avatar");
     avatar.setScale(0.25, 0.25);
-    avatar.setVelocity(100, 200);
     //avatar.setCollideWorldBounds(true);
-    this.cameras.main.startFollow(avatar);*/
+    this.cameras.main.startFollow(avatar);
     var snow = this.add.particles("white");
   
     snow.createEmitter({
@@ -61,12 +68,18 @@ var config = {
   }
   
   function update() {
-  /*
-    if (keys['space'].isDown) {
-      avatar.y -= 4;
+  
+    if (keys['w'].isDown) {
+      avatar.y -= 2;
     }
     if (keys['d'].isDown) {
       avatar.x += 2;
     }
-    */
+    if (keys['a'].isDown) {
+        avatar.x -= 2;
+      }
+      if (keys['s'].isDown) {
+        avatar.y += 2;
+      }
+    
   }
