@@ -24,7 +24,7 @@ var config = {
   function preload() {
     this.load.setBaseURL("/assets/");
   
-    this.load.image("white", "/white.png");
+    this.load.image("white", "/Main.png");
   }
   var keys, avatar
   
